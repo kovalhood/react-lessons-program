@@ -1,53 +1,41 @@
 import { Component } from 'react';
-import { RecipeList } from './RecipeList/RecipeList';
-import initialRecipes from '../recipes.json';
-import { GlobalStyle } from './GlobalStyle';
-import { Layout } from './Layout/Layout';
-import { RecipeForm } from './RecipeForm/RecipeForm';
+import { Layout } from './Layout';
+import { BreedSelect } from './BreedSelect';
+import { fetchDogByBreed } from 'api';
+import { Dog } from './Dog';
+import { ErrorMessage } from './ErorrMessage';
+import { DogSkeleton } from './DogSkeleton';
 
-// render > didMount > getItem > setState > update > render > didUpdate > setItem
+const ERROR_MSG =
+  'У нас не получилось взять данные о собачке, попробуйте еще разочек 😇';
 
 export class App extends Component {
   state = {
-    recipes: [],
+    dog: null,
+    isLoading: false,
+    error: null,
   };
 
-  componentDidMount() {
-    const savedRecipes = localStorage.getItem('recipes');
-    if (savedRecipes !== null) {
-      // If something has already been saved in LS, we write THIS in the state
-      this.setState({ recipes: JSON.parse(savedRecipes) });
-    } else {
-      // If there is nothing in LS yet, we write in state initialRecipes
-      this.setState({ recipes: initialRecipes });
+  fetchDog = async breedId => {
+    try {
+      this.setState({ isLoading: true, error: null });
+      const fetchedDog = await fetchDogByBreed(breedId);
+      this.setState({ dog: fetchedDog });
+    } catch (error) {
+      this.setState({ error: ERROR_MSG });
+    } finally {
+      this.setState({ isLoading: false });
     }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.recipes !== this.state.recipes) {
-      localStorage.setItem('recipes', JSON.stringify(this.state.recipes));
-    }
-  }
-
-  addRecipe = newRecipe => {
-    this.setState(prevState => ({
-      recipes: [...prevState.recipes, newRecipe],
-    }));
-  };
-
-  deleteRecipe = recipeId => {
-    this.setState(prevState => ({
-      recipes: prevState.recipes.filter(recipe => recipe.id !== recipeId),
-    }));
   };
 
   render() {
-    console.log('render');
+    const { dog, isLoading, error } = this.state;
     return (
       <Layout>
-        <RecipeForm onSave={this.addRecipe} />
-        <RecipeList items={this.state.recipes} onDelete={this.deleteRecipe} />
-        <GlobalStyle />
+        <BreedSelect onSelect={this.fetchDog} />
+        {isLoading && <DogSkeleton />}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+        {dog && !isLoading && <Dog dog={dog} />}
       </Layout>
     );
   }
