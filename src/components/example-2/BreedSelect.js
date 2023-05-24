@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { fetchBreeds } from 'api';
-import { ErrorMessage } from './ErorrMessage';
+import { ErrorMessage } from './ErrorMessage';
 
 const ERROR_MSG =
-  'Что-то пошло не так, перезагрузите страницу, вдруг поможет 🥹';
+  'Something went wrong, please refresh the page 🥹';
 
 export const BreedSelect = ({ onSelect }) => {
   const [breeds, setBreeds] = useState([]);

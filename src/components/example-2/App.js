@@ -1,13 +1,13 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import { Layout } from './Layout';
 import { BreedSelect } from './BreedSelect';
 import { fetchDogByBreed } from 'api';
 import { Dog } from './Dog';
-import { ErrorMessage } from './ErorrMessage';
+import { ErrorMessage } from './ErrorMessage';
 import { DogSkeleton } from './DogSkeleton';
 
 const ERROR_MSG =
-  'У нас не получилось взять данные о собачке, попробуйте еще разочек 😇';
+  'Something went wrong, please try again 😇';
 
 export const App = () => {
   const [dog, setDog] = useState(null);

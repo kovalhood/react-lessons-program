@@ -9,12 +9,12 @@ import { CallbackExample } from './CallbackExample';
 export const App = () => {
   return (
     <Layout>
-      {/* <RefExample /> */}
+      <RefExample />
       {/* <HttpReqAbort /> */}
       {/* <HttpReqAbortOnEvent /> */}
       {/* <UseMemoExample /> */}
       {/* <MemoExample /> */}
-      <CallbackExample />
+      {/* <CallbackExample /> */}
     </Layout>
   );
 };
