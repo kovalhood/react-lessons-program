@@ -5,11 +5,11 @@ export const UseMemoExample = () => {
   const [b, setB] = useState(0);
   const [c, setC] = useState(0);
 
-  // console.log('Вычисляем value');
+  // console.log('Counting value');
   // const value = a + b;
 
   const memoizedValue = useMemo(() => {
-    console.log('Вычисляем memoizedValue');
+    console.log('Counting memoizedValue');
     return a + b;
   }, [a, b]);
 

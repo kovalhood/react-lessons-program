@@ -5,12 +5,10 @@ export const HttpReqAbortOnEvent = () => {
   const controllerRef = useRef();
 
   const fetchData = async () => {
-    // Если контроллер ЕСТЬ, отменить запрос
     if (controllerRef.current) {
       controllerRef.current.abort();
     }
 
-    // Если контроллера НЕТ, создать его
     controllerRef.current = new AbortController();
 
     try {
