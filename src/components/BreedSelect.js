@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import Select from 'react-select';
 import { fetchBreeds } from 'api';
-import { ErrorMessage } from './ErorrMessage';
+import { ErrorMessage } from './ErrorMessage';
 
 const ERROR_MSG =
-  'Что-то пошло не так, перезагрузите страницу, вдруг поможет 🥹';
+  'Something went wrong, please reload the page 🥹';
 
 export class BreedSelect extends Component {
   state = {
