@@ -37,9 +37,9 @@ function App() {
         </Route>
         <Route path='/' element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
-                 <Home />
+                <Home />
             </ProtectedRoute>
-         }/>
+        }/>
         <Route path='/posts' element={
           <ProtectedRoute isLoggedIn={isLoggedIn} loginHandler={loginHandler} path='/posts'>
             <Posts />
