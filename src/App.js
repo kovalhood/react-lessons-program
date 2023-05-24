@@ -22,24 +22,24 @@ function App() {
     }
   }
 
-  // if (!isLoggedIn) {
-  //   return <Login loginHandler={loginHandler} />
-  // }
+  if (!isLoggedIn) {
+    return <Login loginHandler={loginHandler} />
+  }
 
   return (
     <div>
       <Header/>
       <Routes>
-        <Route path='/' element={<Home />} />
+        {/* <Route path='/' element={<Home />} /> */}
         <Route path='/login' element={<Login loginHandler={loginHandler} path={'/'} />} />
         <Route path='about' element={<About />}>
           <Route path='data' element={<AboutData />} />
         </Route>
-        {/* <Route path='/' element={
+        <Route path='/' element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
                  <Home />
             </ProtectedRoute>
-         }/> */}
+         }/>
         <Route path='/posts' element={
           <ProtectedRoute isLoggedIn={isLoggedIn} loginHandler={loginHandler} path='/posts'>
             <Posts />

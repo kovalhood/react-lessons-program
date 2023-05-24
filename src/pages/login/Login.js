@@ -4,7 +4,7 @@ function Login ({loginHandler, path}) {
     console.log(loginHandler);
     return (
         <div>
-            <button onClick={() => loginHandler(false, path)}>Login</button>
+            <button onClick={() => loginHandler(true, path)}>Login</button>
         </div>
     )
 }
