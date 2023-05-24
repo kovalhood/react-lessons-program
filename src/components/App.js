@@ -7,7 +7,7 @@ import { ErrorMessage } from './ErorrMessage';
 import { DogSkeleton } from './DogSkeleton';
 
 const ERROR_MSG =
-  'У нас не получилось взять данные о собачке, попробуйте еще разочек 😇';
+  'Something went wrong, please try again 😇';
 
 export class App extends Component {
   state = {

@@ -4,7 +4,7 @@ import { fetchBreeds } from 'api';
 import { ErrorMessage } from './ErorrMessage';
 
 const ERROR_MSG =
-  'Что-то пошло не так, перезагрузите страницу, вдруг поможет 🥹';
+  'Something went wrong, please reload the page 🥹';
 
 export class BreedSelect extends Component {
   state = {
