@@ -20,7 +20,7 @@ function App() {
         <Route path='/posts' element={<Posts />} />
         <Route path='/products' element={<Products />}/>
         <Route path='/products/product/:productId/:name' element={<ProductDetails />} />
-        <Route path='*' element={<NotFound />} />
+        {/* <Route path='*' element={<NotFound />} /> */}
       </Routes>
     </div>
   );
